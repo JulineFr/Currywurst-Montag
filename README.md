@@ -1,1 +1,1 @@
-# Currywurst-Montag
+# Mensa Info Point
