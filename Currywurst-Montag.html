@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Mensa Info Point</title>
+</head>
+<body>
+    <header>
+        <h1>Mensa Info Point</h1>
+        <p>Wochentag: Montag</p> <!-- Hier müsstest du den tatsächlichen Wochentag dynamisch einfügen -->
+    </header>
+
+    <div id="start-screen">
+        <button onclick="showMenu('Frühstück')">Frühstück</button>
+        <button onclick="showMenu('Mittagessen')">Mittagessen</button>
+        <button onclick="showMenu('Snacks')">Snacks</button>
+    </div>
+
+    <div id="main-menu" style="display:none;">
+        <div class="menu-item" data-menu="Currywurst" onclick="showMenuItemDetails('Currywurst')">
+            <img src="https://cdn.gutekueche.de/media/recipe/48762/resp/currywurst___webp_1160_773.webp" alt="Currywurst" class="menu-image">
+            <br>Currywurst
+        </div>
+        <div class="menu-item" data-menu="Nudelgericht" onclick="showMenuItemDetails('Nudelgericht')">
+            <img src="https://s.zentrum-der-gesundheit.de/img/nudelgericht-schnell?width=1500&height=843" alt="Nudelgericht" class="menu-image">
+            <br>Nudelgericht
+        </div>
+        <div class="menu-item" data-menu="Veganes Gericht" onclick="showMenuItemDetails('Veganes Gericht')">
+            <img src="https://image.essen-und-trinken.de/13100178/t/cl/v3/w480/r1/-/eut202111080-tempeh-spiesse-mit-suesssaurem-krautsalat.jpg" alt="Veganes Gericht" class="menu-image">
+            <br>Veganes Gericht
+        </div>
+        <!-- Weitere Menüpunkte hier einfügen -->
+    </div>
+
+    <div id="menu-details">
+        <button onclick="goToStartScreen()">🏠 Zurück zum Startbildschirm</button>
+        <h2 id="menu-title"></h2>
+        <p id="menu-queue"></p>
+        <p id="menu-nutrition"></p>
+        <p id="menu-allergens"></p>
+        <!-- Weitere Nährwertangaben und Allergene hier einfügen -->
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Mensa Info Point</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
