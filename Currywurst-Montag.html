@@ -3,19 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .menu-item {
+            cursor: pointer;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: inline-block;
+            background-color: #fff;
+            text-align: center;
+        }
+        
+        .day-button {
+        cursor: pointer;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        display: block;
+        background-color: #333; /* Farbe für die Wochentage */
+        color: #fff;
+        text-align: left;
+        }
+        #day-selection {
+        text-align: center;
+        }
+
+        .menu-item.selected {
+            background-color: #ddd; /* Farbe für ausgewähltes Menü */
+        }
+
+        .menu-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        #main-menu {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #menu-details {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #start-screen {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #start-screen button {
+            margin: 10px;
+            padding: 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .allergen-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #allergen-filter {
+            display: none;
+        }
+
+       
+        
+        
+    </style>
     <title>Mensa Info Point</title>
 </head>
 <body>
     <header>
+       
         <h1>Mensa Info Point</h1>
         <p id="current-day">Wochentag: Montag</p>
+       
+       
+        
     </header>
-
+    
     <div style="text-align: center;">
         <button onclick="window.history.back()" style="margin-bottom: 20px; margin-right: 10px;">Zurück</button>
         <button onclick="goToStartScreen()" style="margin-top: 20px; margin-bottom: 20px;">🏠</button>
     </div>
+
 
     <div id="day-selection">
         <button onclick="changeDay('Montag')">Montag</button>
@@ -24,6 +127,7 @@
         <button onclick="changeDay('Donnerstag')">Donnerstag</button>
         <button onclick="changeDay('Freitag')">Freitag</button>
     </div>
+
 
     <div id="start-screen">
         <button onclick="showMenu('Frühstück')">Frühstück</button>
@@ -44,26 +148,57 @@
         </div>
     </div>
 
+
+
+    
+
     <div id="main-menu" style="display:none;">
         <div class="menu-item" data-menu="Currywurst" onclick="showMenuItemDetails('Currywurst')">
             <img src="https://cdn.gutekueche.de/media/recipe/48762/resp/currywurst___webp_1160_773.webp" alt="Currywurst" class="menu-image">
             <br>Currywurst
         </div>
-        <!-- Add more menu items here -->
+        <div class="menu-item" data-menu="Nudelgericht" onclick="showMenuItemDetails('Nudelgericht')">
+            <img src="https://s.zentrum-der-gesundheit.de/img/nudelgericht-schnell?width=1500&height=843" alt="Nudelgericht" class="menu-image">
+            <br>Nudelgericht
+        </div>
+        <div class="menu-item" data-menu="Veganes Gericht" onclick="showMenuItemDetails('Veganes Gericht')">
+            <img src="https://image.essen-und-trinken.de/13100178/t/cl/v3/w480/r1/-/eut202111080-tempeh-spiesse-mit-suesssaurem-krautsalat.jpg" alt="Veganes Gericht" class="menu-image">
+            <br>Veganes Gericht
+        </div>
+        <div class="menu-item" data-menu="Müsli mit Früchten" onclick="showMenuItemDetails('Müsli mit Früchten')">
+            <img src="https://www.eatbetter.de/sites/eatbetter.de/files/styles/full_width_tablet_4_3/public/2021-11/muesli_mit_joghurt.jpg?h=92704f59&itok=73-Cswa-" alt="Müsli mit Früchten" class="menu-image">
+            <br>Müsli mit Früchten
+        </div>
+        <div class="menu-item" data-menu="Pancakes mit Ahornsirup" onclick="showMenuItemDetails('Pancakes mit Ahornsirup')">
+            <img src="https://www.haco.de/wp-content/uploads/2019/09/pancakes.jpg" alt="Pancakes mit Ahornsirup" class="menu-image">
+            <br>Pancakes mit Ahornsirup
+        </div>
+        <div class="menu-item" data-menu="Kuchen" onclick="showMenuItemDetails('Kuchen')">
+            <img src="https://image.essen-und-trinken.de/11831680/t/bD/v10/w960/r1/-/364982--8436-.jpg" alt="Kuchen" class="menu-image">
+            <br>Kuchen
+        </div>
+        <div class="menu-item" data-menu="Muffin" onclick="showMenuItemDetails('Muffin')">
+            <img src="https://img.chefkoch-cdn.de/rezepte/1692201277528566/bilder/1502355/crop-960x720/die-schnellsten-und-besten-muffins-ueberhaupt.jpg" alt="Muffin" class="menu-image">
+            <br>Muffin
+        </div>
+        <div class="menu-item" data-menu="Popcorn" onclick="showMenuItemDetails('Popcorn')">
+            <img src="https://api.ggmgastro.com/img/2500/2500/resize/media/catalog/product/1/p/1popcorn4_5578.jpg" alt="Popcorn" class="menu-image">
+            <br>Popcorn
+        </div>
+        
+        <!-- Weitere Menüpunkte hier einfügen -->
     </div>
 
     <div id="menu-details">
+        
+        <h2 id="menu-title"></h2>
         <h2 id="menu-title"></h2>
         <p id="menu-queue"></p>
         <p id="menu-nutrition"></p>
         <p id="menu-allergens"></p>
-        <!-- Add more menu details here -->
+        <!-- Weitere Nährwertangaben und Allergene hier einfügen -->
     </div>
-
+    
     <footer>
         <p>&copy; 2023 Mensa Info Point</p>
     </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
