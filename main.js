@@ -1,12 +1,7 @@
 function goBackOnePage() {
             window.history.go(-1);
         }
-        function goToStartScreen() {
-            document.getElementById('menu-details').style.display = 'none';
-            document.getElementById('main-menu').style.display = 'none';
-            document.getElementById('start-screen').style.display = 'block';
-            document.getElementById('allergen-filter').style.display = 'none'; // Füge diese Zeile hinzu
-        }
+       
 
         let currentDay = 'Montag';
 
